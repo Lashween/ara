@@ -1,0 +1,42 @@
+<!--mat-progress-bar
+  mode="indeterminate"
+  *ngIf="loading$ | async"
+  id="fixed-progress-bar"
+></mat-progress-bar-->
+<mat-toolbar color="accent">
+  <div class="logo">
+    <!--img src="../../../assets/header/header-logo.png" alt="logo" /-->
+  </div>
+  <ng-container *ngIf="user$ | async as user">
+    <div
+      #headerItems
+      fxFlex
+      fxLayout
+      fxLayoutGap="5px"
+      fxLayoutAlign="end center"
+      *ngIf="user"
+    >
+      <!--div routerLink="" class="home icon-text" matRipple>
+        <mat-icon class="pad">home</mat-icon>
+        <span fxHide.lt-sm>HOME</span>
+      </div-->
+      <div class="user-account">
+        <div class="icon-text" [matMenuTriggerFor]="beforeMenu" matRipple>
+          <mat-icon class="pad">account_circle</mat-icon>
+          <span fxHide.lt-sm>{{ user.name || user.email }}</span>
+          <mat-icon>expand_more</mat-icon>
+        </div>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+          <!--      <button mat-menu-item routerLink="profile">Profile</button>-->
+          <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+      </div>
+    </div>
+  </ng-container>
+</mat-toolbar>
+
+<!--mat-progress-bar
+  mode="indeterminate"
+  *ngIf="loading$ | async"
+></mat-progress-bar-->
+<!--<mat-progress-bar mode="determinate" value="100" *ngIf="!loading"></mat-progress-bar>-->

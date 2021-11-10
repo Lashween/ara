@@ -1,0 +1,41 @@
+.feedback-container {
+  min-height: 100%;
+  min-width: 100%;
+
+  @media screen and (min-width: 960px) {
+    padding: 0 25px;
+  }
+
+  .form-container,
+  .history-container {
+    @media screen and (max-width: 959px) {
+      padding: 15px;
+    }
+  }
+
+  .form-container {
+    .feedback-title,
+    .feedback-form {
+      width: 250px;
+    }
+
+    .feedback-form {
+      .mat-form-field-wrapper {
+        margin-bottom: -1.25em;
+      }
+    }
+  }
+
+  .history-container {
+    .feedback-history {
+      width: 100%;
+      .feedback-row {
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        margin: 5px 0;
+        padding: 5px 8px;
+        cursor: pointer;
+      }
+    }
+  }
+}

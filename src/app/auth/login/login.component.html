@@ -1,0 +1,23 @@
+<div class="login-container" fxLayout="column" fxLayoutAlign="center center">
+  <h1>iRAS</h1>
+  <form fxLayout="column" [formGroup]="loginForm" (ngSubmit)="login()" autocomplete="on">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input type="text" matInput formControlName="username" autocomplete="username" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" autocomplete="current-password" />
+      </mat-form-field>
+    </div>
+    <div fxLayoutAlign="center">
+      <button mat-raised-button color="primary" type="submit" [class.spinner]="isLoading"
+        [disabled]="!loginForm.valid || isLoading">
+        Login
+      </button>
+    </div>
+  </form>
+</div>

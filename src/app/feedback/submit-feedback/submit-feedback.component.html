@@ -1,0 +1,130 @@
+<div
+  class="feedback-container"
+  fxLayout="row"
+  fxLayout.lt-md="column"
+  fxLayoutGap="10vw"
+  fxLayoutGap.lt-md="5vh"
+>
+  <div
+    class="form-container"
+    fxLayout="column"
+    fxFlex="50%"
+    fxLayoutAlign="start end"
+    fxLayoutAlign.lt-md="start center"
+  >
+    <div fxFlex="10%" fxFlex.lt-md="0%" style="width: 100%"></div>
+    <div fxFlex="90%" fxFlex.lt-md="100%">
+      <div class="feedback-title">
+        <h1>{{ editingFeedbackId ? "Edit" : "Enter" }} Feedback</h1>
+      </div>
+      <form
+        class="feedback-form"
+        fxLayout="column"
+        fxLayoutGap="10px"
+        fxLayoutGap.lt-md="5px"
+        [formGroup]="feedbackForm"
+      >
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Patient RN</mat-label>
+            <input type="text" matInput formControlName="rn" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Patient Name</mat-label>
+            <input type="text" matInput formControlName="name" />
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" formGroupName="source">
+          <div>
+            <mat-checkbox formControlName="friendsFamily">
+              Friends or Family
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox formControlName="clinicHospital">
+              Referred by Clinic or Hospital
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox formControlName="searchEngine">
+              Search Engine (Google, Yahoo, etc.)
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox formControlName="facebook"> Facebook </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox formControlName="instagram"> Instagram </mat-checkbox>
+          </div>
+          <div formGroupName="other" fxLayout="row" fxLayoutGap="10px">
+            <mat-checkbox formControlName="checked"> Other </mat-checkbox>
+            <input *ngIf="isOtherChecked" formControlName="value" />
+          </div>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Comments</mat-label>
+            <textarea matInput formControlName="comments"></textarea>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <button
+            *ngIf="!editingFeedbackId; else edit"
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="submit()"
+            [disabled]="!feedbackForm.valid"
+          >
+            Submit
+          </button>
+          <ng-template #edit>
+            <button
+              mat-raised-button
+              color="secondary"
+              type="button"
+              (click)="cancelEdit()"
+            >
+              Cancel
+            </button>
+            <button
+              mat-raised-button
+              color="primary"
+              type="button"
+              (click)="saveEdit()"
+              [disabled]="!feedbackForm.valid"
+            >
+              Save Changes
+            </button>
+          </ng-template>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div
+    class="history-container"
+    fxFlex="50%"
+    fxLayout="column"
+    fxLayoutAlign="start start"
+    fxLayoutAlign.lt-md="start center"
+  >
+    <div fxFlex="10%" fxFlex.lt-md="0%" style="width: 100%"></div>
+    <div class="feedback-history" fxFlex="90%" fxFlex.lt-md="100%">
+      <div><h1>Feedback History</h1></div>
+      <div
+        class="feedback-row"
+        *ngFor="let feedback of latestFeedback$ | async as FeedbackDto"
+        fxLayout="row"
+        (click)="editFeedback(feedback)"
+      >
+        <!--{{ feedback.id }}-->
+        <div fxFlex="25">{{ feedback.value.rn }}</div>
+        <div fxFlex="45">{{ feedback.value.name }}</div>
+        <div fxFlex="20">{{ feedback.time | date: "h:mm:ss a" }}</div>
+        <div fxFlex="20">{{ feedback.time | date: "MMM d, y" }}</div>
+      </div>
+    </div>
+  </div>
+</div>
