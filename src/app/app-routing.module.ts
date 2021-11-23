@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: '404', component: AppComponent },
-  { path: '**', redirectTo: 'bookings' }, // { path: '**', redirectTo: '404' }
+  { path: '**', redirectTo: 'login' }, // { path: '**', redirectTo: '404' }
 ];
 
 @NgModule({

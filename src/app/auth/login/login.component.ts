@@ -31,7 +31,13 @@ export class LoginComponent implements OnInit {
       .login(this.loginForm.value.username, this.loginForm.value.password)
       .then(() => {
         console.log('Login success');
-        this.router.navigate(['/']);
+        const user = this.authService.getUser()
+        if (user.role === "mechanic") {
+          this.router.navigate(['/bookings']);
+        }
+        else {
+          this.router.navigate(['/feedback']);
+        }
       })
       .catch((error) => {
         console.error(error);
