@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "iras": {
+    "ara": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/iras",
+            "outputPath": "dist/ara",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -75,18 +75,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "iras:build"
+            "browserTarget": "ara:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "iras:build:production"
+              "browserTarget": "ara:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "iras:build"
+            "browserTarget": "ara:build"
           }
         },
         "test": {
@@ -124,11 +124,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "iras:serve"
+            "devServerTarget": "ara:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "iras:serve:production"
+              "devServerTarget": "ara:serve:production"
             }
           }
         },
@@ -139,5 +139,5 @@
       }
     }
   },
-  "defaultProject": "iras"
+  "defaultProject": "ara"
 }
