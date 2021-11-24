@@ -1,0 +1,19 @@
+<div class="order-container" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10vw" fxLayoutGap.lt-md="5vh">
+  <div class="history-container" fxFlex="50%" fxLayout="column" fxLayoutAlign="start start"
+    fxLayoutAlign.lt-md="start center">
+    <div fxFlex="10%" fxFlex.lt-md="0%" style="width: 100%"></div>
+    <div class="order-list" fxFlex="90%" fxFlex.lt-md="100%">
+      <div>
+        <h1>Order History</h1>
+      </div>
+      <div class="order-row" *ngFor="let order of latestOrder$ | async as OrderDto" fxLayout="row"
+        (click)="editOrder(order)">
+        <!--{{ order.id }}-->
+        <div fxFlex="25">{{ order.value.rn }}</div>
+        <div fxFlex="45">{{ order.value.name }}</div>
+        <div fxFlex="20">{{ order.time | date: "h:mm:ss a" }}</div>
+        <div fxFlex="20">{{ order.time | date: "MMM d, y" }}</div>
+      </div>
+    </div>
+  </div>
+</div>

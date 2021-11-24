@@ -1,4 +1,4 @@
-.feedback-container {
+.request-container {
   min-height: 100%;
   min-width: 100%;
 
@@ -14,12 +14,12 @@
   }
 
   .form-container {
-    .feedback-title,
-    .feedback-form {
+    .request-title,
+    .request-form {
       width: 250px;
     }
 
-    .feedback-form {
+    .request-form {
       .mat-form-field-wrapper {
         margin-bottom: -1.25em;
       }
@@ -27,9 +27,9 @@
   }
 
   .history-container {
-    .feedback-history {
+    .request-history {
       width: 100%;
-      .feedback-row {
+      .request-row {
         border: 1px solid lightgray;
         border-radius: 5px;
         margin: 5px 0;

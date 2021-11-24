@@ -4,18 +4,18 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map, take } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
-import { FeedbackDto } from './feedback.entity';
+import { OrderDto } from './order.entity';
 
 @Component({
-  selector: 'app-submit-feedback',
-  templateUrl: './submit-feedback.component.html',
-  styleUrls: ['./submit-feedback.component.scss'],
+  selector: 'app-view-order-list',
+  templateUrl: './view-order-list.component.html',
+  styleUrls: ['./view-order-list.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class SubmitFeedbackComponent implements OnInit {
+export class ViewOrderListComponent implements OnInit {
   userName = '';
 
-  feedbackForm = new FormGroup({
+  orderForm = new FormGroup({
     rn: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
     source: new FormGroup(
@@ -35,11 +35,8 @@ export class SubmitFeedbackComponent implements OnInit {
     comments: new FormControl(''),
   });
 
-  latestFeedback$: any = this.firestore
-    .collection('feedback', (ref) => {
-      const currentDate = new Date(new Date().setHours(0, 0, 0, 0));
-      return ref.where('time', '>', currentDate).orderBy('time', 'desc');
-    })
+  latestOrder$: any = this.firestore
+    .collection('request')
     .snapshotChanges()
     .pipe(
       map((actions) => {
@@ -47,7 +44,7 @@ export class SubmitFeedbackComponent implements OnInit {
       })
     );
 
-  editingFeedbackId: string | null = null;
+  editingOrderId: string | null = null;
 
   constructor(
     private firestore: AngularFirestore,
@@ -62,71 +59,71 @@ export class SubmitFeedbackComponent implements OnInit {
   }
 
   get isOtherChecked(): boolean {
-    return this.feedbackForm.get('source')?.value.other.checked;
+    return this.orderForm.get('source')?.value.other.checked;
   }
 
   submit(): void {
     this.firestore
-      .collection('feedback')
+      .collection('order')
       .add({
-        value: this.feedbackForm.value,
+        value: this.orderForm.value,
         time: new Date(),
         user: this.userName,
-      } as FeedbackDto)
+      } as OrderDto)
       .then((res) => {
         this.snackBar.open(
-          'Feedback submitted for ' + this.feedbackForm.value.rn,
+          'Order submitted for ' + this.orderForm.value.rn,
           'Ok',
           { duration: 3000 }
         );
-        this.feedbackForm.reset();
+        this.orderForm.reset();
       })
       .catch((e) => {
         console.log(e);
       });
   }
 
-  private mapToDto(a: any): FeedbackDto {
+  private mapToDto(a: any): OrderDto {
     const data = a.payload.doc.data() as any;
     const id = a.payload.doc.id as string;
     const time = new Date(
       data.time.seconds * 1000 + data.time.nanoseconds / 1000000
     );
-    return { id, time, value: data.value } as FeedbackDto;
+    return { id, time, value: data.value } as OrderDto;
   }
 
-  editFeedback(feedbackDto: FeedbackDto): void {
-    this.editingFeedbackId = feedbackDto.id as string;
-    const feedback = feedbackDto.value;
-    this.feedbackForm.patchValue(feedback);
+  editOrder(orderDto: OrderDto): void {
+    this.editingOrderId = orderDto.id as string;
+    const order = orderDto.value;
+    this.orderForm.patchValue(order);
   }
 
   cancelEdit(): void {
-    this.editingFeedbackId = null;
-    this.feedbackForm.reset();
+    this.editingOrderId = null;
+    this.orderForm.reset();
   }
 
   saveEdit(): void {
-    console.log('Edit feedback form id: ', this.editingFeedbackId);
+    console.log('Edit order form id: ', this.editingOrderId);
     this.firestore
-      .doc(`feedback/${this.editingFeedbackId}`)
+      .doc(`order/${this.editingOrderId}`)
       .update({
-        value: this.feedbackForm.value,
+        value: this.orderForm.value,
         user: this.userName,
-      } as FeedbackDto)
+      } as OrderDto)
       .then(() => {
         this.snackBar.open(
-          'Feedback edited for ' + this.feedbackForm.value.rn,
+          'Order edited for ' + this.orderForm.value.rn,
           'Ok',
           { duration: 3000 }
         );
-        this.feedbackForm.reset();
+        this.orderForm.reset();
       })
       .catch((e) => {
         console.log(e);
       })
       .finally(() => {
-        this.editingFeedbackId = null;
+        this.editingOrderId = null;
       });
   }
 }

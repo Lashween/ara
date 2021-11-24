@@ -7,16 +7,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FeedbackRoutingModule } from './feedback-routing.module';
-import { SubmitFeedbackComponent } from './submit-feedback/submit-feedback.component';
-import { FeedbackHistoryComponent } from './submit-feedback/feedback-history/feedback-history.component';
-import { FeedbackFormComponent } from './submit-feedback/feedback-form/feedback-form.component';
+import { ClientRoutingModule } from './client-routing.module';
+import { RequestAssistanceComponent } from './request-assistance/request-assistance.component';
+import { RequestFormComponent } from './request-assistance/request-form/request-form.component';
 
 @NgModule({
-  declarations: [SubmitFeedbackComponent, FeedbackHistoryComponent, FeedbackFormComponent],
+  declarations: [RequestAssistanceComponent, RequestFormComponent],
   imports: [
     CommonModule,
-    FeedbackRoutingModule,
+    ClientRoutingModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
@@ -26,4 +25,4 @@ import { FeedbackFormComponent } from './submit-feedback/feedback-form/feedback-
     FlexLayoutModule,
   ],
 })
-export class FeedbackModule {}
+export class ClientModule { }

@@ -33,10 +33,10 @@ export class LoginComponent implements OnInit {
         console.log('Login success');
         const user = this.authService.getUser()
         if (user.role === "mechanic") {
-          this.router.navigate(['/bookings']);
+          this.router.navigate(['/mechanic']);
         }
         else {
-          this.router.navigate(['/feedback']);
+          this.router.navigate(['/client']);
         }
       })
       .catch((error) => {

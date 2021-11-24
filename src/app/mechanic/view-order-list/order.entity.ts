@@ -1,13 +1,13 @@
 import { FormControl, FormGroup } from '@angular/forms';
 
-export interface FeedbackDto {
+export interface OrderDto {
   id?: string;
   time: Date;
-  value: Feedback | FormGroup;
+  value: Order | FormGroup;
   user?: string;
 }
 
-export interface Feedback {
+export interface Order {
   rn: string | FormControl;
   name: string | FormControl;
   source: Source | FormGroup;

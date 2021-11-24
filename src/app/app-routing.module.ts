@@ -6,15 +6,15 @@ import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
   {
-    path: 'feedback',
+    path: 'client',
     loadChildren: () =>
-      import('./feedback/feedback.module').then((m) => m.FeedbackModule),
+      import('./client/client.module').then((m) => m.ClientModule),
     canActivate: [AuthGuard],
   },
   {
-    path: 'bookings',
+    path: 'mechanic',
     loadChildren: () =>
-      import('./bookings/bookings.module').then((m) => m.BookingsModule),
+      import('./mechanic/mechanic.module').then((m) => m.MechanicModule),
     canActivate: [AuthGuard],
   },
   { path: 'login', component: LoginComponent },
