@@ -9,10 +9,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ClientRoutingModule } from './client-routing.module';
 import { RequestAssistanceComponent } from './request-assistance/request-assistance.component';
-import { RequestFormComponent } from './request-assistance/request-form/request-form.component';
 
 @NgModule({
-  declarations: [RequestAssistanceComponent, RequestFormComponent],
+  declarations: [RequestAssistanceComponent],
   imports: [
     CommonModule,
     ClientRoutingModule,

@@ -8,6 +8,7 @@
 
   .form-container,
   .history-container {
+    margin-top: 10vh;
     @media screen and (max-width: 959px) {
       padding: 15px;
     }
@@ -29,6 +30,10 @@
   .history-container {
     .order-list {
       width: 100%;
+      .order-header {
+        font-weight: 500;
+      }
+      .order-header,
       .order-row {
         border: 1px solid lightgray;
         border-radius: 5px;

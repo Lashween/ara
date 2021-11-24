@@ -8,11 +8,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MechanicRoutingModule } from './mechanic-routing.module';
-import { OrderListComponent } from './view-order-list/order-list/order-list.component';
 import { ViewOrderListComponent } from './view-order-list/view-order-list.component';
 
 @NgModule({
-  declarations: [ViewOrderListComponent, OrderListComponent],
+  declarations: [ViewOrderListComponent],
   imports: [
     CommonModule,
     MechanicRoutingModule,
