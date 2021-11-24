@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { RequestDto } from './request.entity';
@@ -25,7 +26,8 @@ export class RequestAssistanceComponent implements OnInit {
   constructor(
     private firestore: AngularFirestore,
     private snackBar: MatSnackBar,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,7 @@ export class RequestAssistanceComponent implements OnInit {
           'Ok',
           { duration: 3000 }
         );
+        this.router.navigate(['/client/workshops', { id: 0 }]);
         this.RequestForm.reset();
       })
       .catch((e) => {

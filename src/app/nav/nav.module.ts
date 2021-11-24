@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 
@@ -17,7 +18,8 @@ import { HeaderComponent } from './header/header.component';
     MatProgressBarModule,
     MatMenuModule,
     FlexLayoutModule,
+    RouterModule
   ],
   exports: [HeaderComponent, FooterComponent],
 })
-export class NavModule {}
+export class NavModule { }

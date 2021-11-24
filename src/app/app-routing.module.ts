@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,8 @@ const routes: Routes = [
       import('./mechanic/mechanic.module').then((m) => m.MechanicModule),
     canActivate: [AuthGuard],
   },
+  { path: 'reviews', component: ReviewsComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: '404', component: AppComponent },
   { path: '**', redirectTo: 'login' }, // { path: '**', redirectTo: '404' }
