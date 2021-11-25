@@ -8,12 +8,12 @@
     <!--img src="../../../assets/header/header-logo.png" alt="logo" /-->
   </div>
   <div #headerItems fxFlex fxLayout fxLayoutGap="5px" fxLayoutAlign="end center">
-    <div routerLink="/reviews" class="home icon-text" matRipple>
-      <mat-icon class="pad">home</mat-icon>
+    <div routerLink="/reviews" class="icon-text" matRipple>
+      <mat-icon class="pad">star_border</mat-icon>
       <span fxHide.lt-sm>REVIEWS</span>
     </div>
-    <div routerLink="/about" class="home icon-text" matRipple>
-      <mat-icon class="pad">home</mat-icon>
+    <div routerLink="/about" class="icon-text" matRipple>
+      <mat-icon class="pad">contact_support</mat-icon>
       <span fxHide.lt-sm>ABOUT</span>
     </div>
     <div class="user-account" *ngIf="user$ | async as user">
