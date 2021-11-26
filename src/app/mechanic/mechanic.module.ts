@@ -11,9 +11,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MechanicRoutingModule } from './mechanic-routing.module';
 import { ViewOrderListComponent } from './view-order-list/view-order-list.component';
 import { OrderDetailsDialogComponent } from './view-order-list/order-details-dialog/order-details-dialog.component';
+import { CaseDetailsComponent } from './case-details/case-details.component';
 
 @NgModule({
-  declarations: [ViewOrderListComponent, OrderDetailsDialogComponent],
+  declarations: [ViewOrderListComponent, OrderDetailsDialogComponent, CaseDetailsComponent],
   imports: [
     CommonModule,
     MechanicRoutingModule,

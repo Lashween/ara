@@ -5,7 +5,7 @@ import { WorkshopsComponent } from './workshops/workshops.component';
 
 const routes: Routes = [
   { path: 'request', component: RequestAssistanceComponent },
-  { path: 'workshops', component: WorkshopsComponent },
+  { path: 'workshops/:id', component: WorkshopsComponent },
   { path: '**', redirectTo: 'request' },
 ];
 

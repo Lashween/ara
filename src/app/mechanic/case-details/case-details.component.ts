@@ -3,11 +3,13 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-workshops',
-  templateUrl: './workshops.component.html',
-  styleUrls: ['./workshops.component.scss']
+  selector: 'app-case-details',
+  templateUrl: './case-details.component.html',
+  styleUrls: ['./case-details.component.scss']
 })
-export class WorkshopsComponent implements OnInit {
+export class CaseDetailsComponent implements OnInit {
+
+  currentCase: any
 
   constructor(
     private route: ActivatedRoute,
@@ -26,8 +28,7 @@ export class WorkshopsComponent implements OnInit {
       .toPromise()
       .then(data => {
         if (data.exists) {
-          const currentCase = data.data();
-          console.log('Case: ', currentCase);
+          this.currentCase = data.data();
           //resolve(user);
         } else {
           //reject('User not found');

@@ -50,7 +50,7 @@ export class RequestAssistanceComponent implements OnInit {
           'Ok',
           { duration: 3000 }
         );
-        this.router.navigate(['/client/workshops', { id: 0 }]);
+        this.router.navigate(['/client/workshops', res.id]);
         this.RequestForm.reset();
       })
       .catch((e) => {
