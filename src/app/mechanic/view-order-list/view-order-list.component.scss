@@ -6,32 +6,19 @@
     padding: 0 25px;
   }
 
-  .form-container,
-  .history-container {
+  .list-container {
     margin-top: 10vh;
     @media screen and (max-width: 959px) {
       padding: 15px;
     }
-  }
-
-  .form-container {
-    .order-title,
-    .order-form {
-      width: 250px;
-    }
-
-    .order-form {
-      .mat-form-field-wrapper {
-        margin-bottom: -1.25em;
-      }
-    }
-  }
-
-  .history-container {
     .order-list {
       width: 100%;
+      max-width: 800px;
       .order-header {
         font-weight: 500;
+      }
+      .order-row {
+        cursor: pointer;
       }
       .order-header,
       .order-row {
@@ -39,7 +26,15 @@
         border-radius: 5px;
         margin: 5px 0;
         padding: 5px 8px;
-        cursor: pointer;
+        div {
+          flex-shrink: 0;
+        }
+        button {
+          font-size: 12px;
+          line-height: 12px;
+          min-width: unset !important;
+          padding: 5px 5px !important;
+        }
       }
     }
   }

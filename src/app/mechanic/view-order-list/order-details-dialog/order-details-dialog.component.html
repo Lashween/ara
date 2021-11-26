@@ -1,0 +1,11 @@
+<div class="details-container" fxLayout="column">
+    <div><strong>Order ID :</strong> {{ data.order.id }}</div>
+    <div><strong>Name :</strong> {{ order.name }}</div>
+    <div><strong>Car Model :</strong> {{ order.carModel }}</div>
+    <div><strong>Issue :</strong> {{ order.issue }}</div>
+    <div><strong>Location :</strong> {{ order.location }}</div>
+    <div><strong>Time :</strong> {{ time | date: "h:mm:ss a" }}</div>
+    <div><strong>Date :</strong> {{ time | date: "MMM d, y" }}</div>
+</div>
+<button (click)="accept()">Accept</button>
+<button (click)="close()">Close</button>

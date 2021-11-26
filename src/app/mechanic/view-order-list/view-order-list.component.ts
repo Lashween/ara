@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map, take } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
+import { OrderDetailsDialogComponent } from './order-details-dialog/order-details-dialog.component';
 import { OrderDto } from './order.entity';
 
 @Component({
@@ -26,7 +28,8 @@ export class ViewOrderListComponent implements OnInit {
   constructor(
     private firestore: AngularFirestore,
     private snackBar: MatSnackBar,
-    private authService: AuthService
+    private authService: AuthService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +45,15 @@ export class ViewOrderListComponent implements OnInit {
       data.time.seconds * 1000 + data.time.nanoseconds / 1000000
     );
     return { id, time, value: data.value } as OrderDto;
+  }
+
+  showDetails(order: OrderDto): void {
+
+    const dialogRef = this.dialog.open(OrderDetailsDialogComponent, { data: { order }, });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

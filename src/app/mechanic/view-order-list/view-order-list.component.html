@@ -1,29 +1,22 @@
-<div class="order-container" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10vw" fxLayoutGap.lt-md="5vh"
-  fxLayoutAlign="center start">
-  <div class="history-container" fxFlex="50%" fxLayout="column" fxLayoutAlign="start start"
-    fxLayoutAlign.lt-md="start center">
-    <div fxFlex="10%" fxFlex.lt-md="0%" style="width: 100%"></div>
+<div class="order-container" fxLayout="column" fxLayoutGap="10vw" fxLayoutGap.lt-md="5vh">
+  <div class="list-container" fxLayout="column" fxLayoutAlign="start center">
+    <div class="list-title">
+      <h1>Current Repair Requests</h1>
+    </div>
     <div class="order-list" fxFlex="90%" fxFlex.lt-md="100%">
-      <div>
-        <h1>Current Repair Requests</h1>
-      </div>
       <div class="order-header" fxLayout="row">
         <!--{{ order.id }}-->
-        <div fxFlex="45">Name</div>
-        <div fxFlex="25">Car Model</div>
-        <div fxFlex="45">Issue</div>
-        <div fxFlex="45">Location</div>
-        <div fxFlex="20">Time</div>
-        <div fxFlex="20">Date</div>
+        <div fxFlex="45" fxFlex.xs="40">Name</div>
+        <div fxFlex="45" fxFlex.xs="40">Location</div>
+        <div fxFlex="10" fxFlex.xs="20"></div>
       </div>
       <div class="order-row" *ngFor="let order of latestOrder$ | async as OrderDto" fxLayout="row">
         <!--{{ order.id }}-->
-        <div fxFlex="45">{{ order.value.name }}</div>
-        <div fxFlex="25">{{ order.value.carModel }}</div>
-        <div fxFlex="45">{{ order.value.issue }}</div>
-        <div fxFlex="45">{{ order.value.location }}</div>
-        <div fxFlex="20">{{ order.time | date: "h:mm:ss a" }}</div>
-        <div fxFlex="20">{{ order.time | date: "MMM d, y" }}</div>
+        <div fxFlex="45" fxFlex.xs="40">{{ order.value.name }}</div>
+        <div fxFlex="45" fxFlex.xs="40">{{ order.value.location }}</div>
+        <div fxFlex="10" fxFlex.xs="20" fxLayout="row" fxLayoutAlign="end center">
+          <button mat-raised-button type="button" (click)="showDetails(order)">Details</button>
+        </div>
       </div>
     </div>
   </div>
