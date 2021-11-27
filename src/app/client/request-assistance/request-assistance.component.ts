@@ -18,9 +18,12 @@ export class RequestAssistanceComponent implements OnInit {
 
   RequestForm = new FormGroup({
     name: new FormControl('', Validators.required),
+    phoneNumber: new FormControl('', Validators.required),
     carModel: new FormControl('', Validators.required),
     location: new FormControl('', Validators.required),
     issue: new FormControl(''),
+    confirmed: new FormControl(false),
+    completed: new FormControl(false),
   });
 
   constructor(
@@ -50,7 +53,7 @@ export class RequestAssistanceComponent implements OnInit {
           'Ok',
           { duration: 3000 }
         );
-        this.router.navigate(['/client/workshops', res.id]);
+        this.router.navigate(['/client/request', res.id]);
         this.RequestForm.reset();
       })
       .catch((e) => {

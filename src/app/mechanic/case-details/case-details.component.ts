@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { OrderDto } from '../view-order-list/order.entity';
 
 @Component({
   selector: 'app-case-details',
@@ -9,11 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CaseDetailsComponent implements OnInit {
 
-  currentCase: any
+  currentCase: OrderDto | null = null
 
   constructor(
     private route: ActivatedRoute,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -28,14 +30,32 @@ export class CaseDetailsComponent implements OnInit {
       .toPromise()
       .then(data => {
         if (data.exists) {
-          this.currentCase = data.data();
+          this.currentCase = data.data() as OrderDto;
+          this.currentCase.id = caseId as string
           //resolve(user);
         } else {
           //reject('User not found');
         }
       })
 
+  }
+
+
+  completed(): void {
+    this.firestore
+      .doc(`request/${this.currentCase?.id}`)
+      .update({ "value.completed": true })
+      .then(() => {
+        this.router.navigate(['/mechanic/order-list']);
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+      .finally(() => {
+
+      });
 
   }
+
 
 }

@@ -10,9 +10,10 @@ import { MatInputModule } from '@angular/material/input';
 import { ClientRoutingModule } from './client-routing.module';
 import { RequestAssistanceComponent } from './request-assistance/request-assistance.component';
 import { WorkshopsComponent } from './workshops/workshops.component';
+import { RequestCompletedComponent } from './request-completed/request-completed.component';
 
 @NgModule({
-  declarations: [RequestAssistanceComponent, WorkshopsComponent],
+  declarations: [RequestAssistanceComponent, WorkshopsComponent, RequestCompletedComponent],
   imports: [
     CommonModule,
     ClientRoutingModule,

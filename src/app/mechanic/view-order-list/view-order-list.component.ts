@@ -17,7 +17,9 @@ export class ViewOrderListComponent implements OnInit {
   userName = '';
 
   latestOrder$: any = this.firestore
-    .collection('request')
+    .collection('request', (ref) => {
+      return ref.where('value.completed', "!=", true);
+    })
     .snapshotChanges()
     .pipe(
       map((actions) => {

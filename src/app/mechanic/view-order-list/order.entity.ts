@@ -12,4 +12,10 @@ export interface Order {
   name: string | FormControl;
   location: string | FormControl;
   issue: string | FormControl;
+  phoneNumber: string | FormControl;
+  confirmed?: boolean | FormControl;
+  completed?: boolean | FormControl;
+  caseDetails?: string | FormControl;
+  totalPrice?: string | FormControl;
+  mechanicId?: string | FormControl;
 }
