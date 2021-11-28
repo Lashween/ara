@@ -1,4 +1,16 @@
 <div *ngIf="completedRequest$ | async as completedRequest">
-    {{completedRequest | json}}
-    {{mechanic | json}}
+    <div class="complete-container" fxLayout="column" fxLayoutAlign="center center">
+        <img src="assets/img/client/complete/settled-banner-1.png" alt="request-completed" />
+        <div class="receipt" fxLayout="column" fxLayoutAlign="start start">
+            <h2>Receipt</h2>
+            <div>Mechanics name: {{mechanic?.name}}</div>
+            <div>Car Model: {{$any(completedRequest?.value).carModel}}</div>
+            <div>Details: {{$any(completedRequest?.value).name}}</div>
+            <div>Total (RM): {{$any(completedRequest?.value).name}}</div>
+        </div>
+        <div class="thank-you">Thank you!</div>
+        <button mat-raised-button type="button" [routerLink]="'/client/request'">
+            Home
+        </button>
+    </div>
 </div>
