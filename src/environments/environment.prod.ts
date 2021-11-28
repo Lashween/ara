@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "AIzaSyC4_-pcfgMECRy2_Gk5QiTlzsFfCS2GMN0",
-    authDomain: "iras-lashween.firebaseapp.com",
-    projectId: "iras-lashween",
-    storageBucket: "iras-lashween.appspot.com",
-    messagingSenderId: "769383896953",
-    appId: "1:769383896953:web:603837a3534587447d41a8"
+    apiKey: "AIzaSyAeDj4XYupLB5qwL1McCzNNFnn5ECQyEhc",
+    authDomain: "auto-repair-assistance.firebaseapp.com",
+    projectId: "auto-repair-assistance",
+    storageBucket: "auto-repair-assistance.appspot.com",
+    messagingSenderId: "900782606534",
+    appId: "1:900782606534:web:df25180698e449289aafc7"
   },
 };
