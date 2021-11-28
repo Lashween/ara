@@ -87,7 +87,8 @@ export class AuthService {
         .toPromise()
         .then((data) => {
           if (data.exists) {
-            const user = data.data();
+            let user: any = data.data();
+            user.uid = uid
             console.log('User data: ', user);
             localStorage.setItem('user', JSON.stringify(user));
             resolve(user);

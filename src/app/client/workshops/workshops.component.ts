@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Request, RequestDto } from '../request-assistance/request.entity';
 
 @Component({
   selector: 'app-workshops',
@@ -11,7 +12,9 @@ import { map } from 'rxjs/operators';
 })
 export class WorkshopsComponent implements OnInit {
 
-  currentRequest$: Observable<Request> = of()
+  mechanic: any
+
+  currentRequest$: Observable<RequestDto> = of()
 
   constructor(
     private route: ActivatedRoute,
@@ -30,8 +33,21 @@ export class WorkshopsComponent implements OnInit {
       .snapshotChanges()
       .pipe(
         map((action: any) => {
-          const data = action.payload.data()
-          if (data?.value?.completed) {
+          const data: RequestDto = action.payload.data()
+          const request = data?.value as Request
+          if (request.confirmed) {
+            this.firestore
+              .doc(`users/${request.mechanicId}`)
+              .get()
+              .toPromise()
+              .then((data) => {
+                if (data.exists) {
+                  this.mechanic = data.data();
+                  console.log("mechanic: ", this.mechanic)
+                }
+              });
+          }
+          if (request.completed) {
             console.log("route to receipt")
             this.router.navigate([`/client/request/${caseId}/complete`]);
           }
