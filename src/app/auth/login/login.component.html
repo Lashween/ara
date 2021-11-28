@@ -4,7 +4,7 @@
   <form fxLayout="column" [formGroup]="loginForm" (ngSubmit)="login()" autocomplete="on">
     <div>
       <mat-form-field appearance="fill">
-        <mat-label>Username</mat-label>
+        <mat-label>Email</mat-label>
         <input type="text" matInput formControlName="username" autocomplete="username" />
       </mat-form-field>
     </div>
@@ -14,10 +14,13 @@
         <input type="password" matInput formControlName="password" autocomplete="current-password" />
       </mat-form-field>
     </div>
-    <div fxLayoutAlign="center">
+    <div fxLayoutAlign="space-between">
       <button mat-raised-button color="primary" type="submit" [class.spinner]="isLoading"
         [disabled]="!loginForm.valid || isLoading">
         Login
+      </button>
+      <button mat-raised-button color="secondary" routerLink="/register">
+        Register
       </button>
     </div>
   </form>

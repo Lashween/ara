@@ -31,6 +31,23 @@ export class AuthService {
     );
   }
 
+  register(email: string, password: string): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      this.auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          const uid = user?.uid
+          if (uid) { resolve(uid); }
+          else { throw new Error('Invalid uid'); }
+        })
+        .catch((error) => {
+          console.error(error);
+          reject(error);
+        });
+    });
+  }
+
   login(username: string, password: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       const email = `${username}`;

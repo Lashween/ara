@@ -5,12 +5,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
+import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
-import { LoginModule } from './auth/login/login.module';
 import { NavModule } from './nav/nav.module';
-import { AboutComponent } from './about/about.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LoginModule,
+    AuthModule,
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     MatSnackBarModule,
@@ -28,4 +28,4 @@ import { ReviewsComponent } from './reviews/reviews.component';
   providers: [AuthService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

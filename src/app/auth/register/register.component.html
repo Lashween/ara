@@ -1,0 +1,36 @@
+<div class="register-container" fxLayout="column" fxLayoutAlign="center center">
+    <h1>Auto Repair Assistance</h1>
+    <h3 style="font-style: italic;color: lightgray;">by Lashween for LKW</h3>
+    <form fxLayout="column" [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="on">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput formControlName="name" autocomplete="name" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="text" matInput formControlName="email" autocomplete="email" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password" autocomplete="new-password" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-checkbox formControlName="isMechanic"> I am a mechanic </mat-checkbox>
+        </div>
+        <div fxLayoutAlign="space-between" style="padding-top: 18px">
+            <button mat-raised-button color="primary" type="submit" [class.spinner]="isLoading"
+                [disabled]="!registerForm.valid || isLoading">
+                Register
+            </button>
+            <button mat-raised-button color="secondary" routerLink="/login">
+                Login
+            </button>
+        </div>
+    </form>
+</div>
