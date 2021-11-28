@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderDto } from '../view-order-list/order.entity';
 
@@ -11,6 +12,11 @@ import { OrderDto } from '../view-order-list/order.entity';
 export class CaseDetailsComponent implements OnInit {
 
   currentCase: OrderDto | null = null
+
+  detailsForm = new FormGroup({
+    details: new FormControl('', Validators.required),
+    totalPrice: new FormControl(0, Validators.required),
+  });
 
   constructor(
     private route: ActivatedRoute,
@@ -44,7 +50,11 @@ export class CaseDetailsComponent implements OnInit {
   completed(): void {
     this.firestore
       .doc(`request/${this.currentCase?.id}`)
-      .update({ "value.completed": true })
+      .update({
+        "value.completed": true,
+        "value.details": this.detailsForm.value.details,
+        "value.totalPrice": this.detailsForm.value.totalPrice
+      })
       .then(() => {
         this.router.navigate(['/mechanic/order-list']);
       })

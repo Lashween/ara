@@ -1,0 +1,17 @@
+.details-container {
+  .form-container {
+    @media screen and (max-width: 959px) {
+      padding: 15px;
+    }
+    .request-title,
+    .request-form {
+      width: 250px;
+    }
+
+    .request-form {
+      .mat-form-field-wrapper {
+        margin-bottom: -1.25em;
+      }
+    }
+  }
+}

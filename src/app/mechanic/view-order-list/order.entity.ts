@@ -16,6 +16,6 @@ export interface Order {
   confirmed?: boolean | FormControl;
   completed?: boolean | FormControl;
   caseDetails?: string | FormControl;
-  totalPrice?: string | FormControl;
+  totalPrice?: number | FormControl;
   mechanicId?: string | FormControl;
 }

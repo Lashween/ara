@@ -1,1 +1,4 @@
-<p>request-completed works!</p>
+<div *ngIf="completedRequest$ | async as completedRequest">
+    {{completedRequest | json}}
+    {{mechanic | json}}
+</div>

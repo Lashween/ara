@@ -1,2 +1,32 @@
-{{currentCase | json}}
-<button (click)="completed()">Completed</button>
+<div class="details-container">
+    <div class="form-container" fxLayout="column" fxLayoutAlign="start center">
+        <div class="request-title">
+            <h1>Current Case</h1>
+            <p>Customer name: {{currentCase?.user}}</p>
+            <p>Customer number: {{$any(currentCase?.value)?.phoneNumber}}</p>
+            <p>Customer location: {{$any(currentCase?.value)?.location}}</p>
+        </div>
+        <form class="request-form" fxLayout="column" fxLayoutGap="10px" fxLayoutGap.lt-md="5px"
+            [formGroup]="detailsForm" fxLayoutAlign="center center">
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Details</mat-label>
+                    <textarea matInput formControlName="details" placeholder="Enter case details" cdkTextareaAutosize
+                        cdkAutosizeMinRows="5" cdkAutosizeMaxRows="10"></textarea>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Total</mat-label>
+                    <input type="number" matInput formControlName="totalPrice" />
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                <button mat-raised-button color="primary" type="button" (click)="completed()"
+                    [disabled]="!detailsForm.valid">
+                    Complete Case
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
