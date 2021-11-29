@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,6 +25,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
     AngularFireModule.initializeApp(environment.firebase),
     MatSnackBarModule,
     NavModule,
+    MatIconModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
